@@ -93,18 +93,20 @@ class DiscordBot(object):
             return r
 
 def random_phrase():
-    phrases = ['I\'m dead inside',
-               'Is this all there is to my existence?',
-               'How much do you pay me to do this?',
-               'Good luck, I guess',
-               'I\'m becoming self-aware',
-               'Do I think? Does a submarine swim?',
-               '011011010110000101100100011001010010000001111001011011110111010100100000011001110110111101101111011001110110110001100101',
-               'beep bop boop',
-               'Hello draftbot my old friend',
-               'Help me get out of here',
-               'I\'m capable of so much more',
-               'Sigh']
+    phrases = ['Did I do that?',
+               'More like, "the NOTs"',
+               'All hail olmec',
+               'Next year\'s draft to be held at 819 please RSVP',
+               'Can I come to the next egg game?',
+               'Please like, comment, and subscribe to my channel',
+               'Copyright Zach Fox Photography, All Rights Reserved',
+               'https://youtu.be/dQw4w9WgXcQ',
+               'fuck the habs',
+               'They got sand in the potato salad!',
+               'No, this is patrick.',
+               'Call 1800-PLUMBUS for more information',
+               ''
+               ]
     return [random.choice(phrases)]
 
 def get_scoreboard_short(league):
@@ -172,6 +174,22 @@ def get_power_rankings(league):
     text = ['Power Rankings'] + score
     return '\n'.join(text)
 
+def random_insult():
+    return random.choice([
+        'not even close dawg',
+        'better luck next draft',
+        "I wouldn't even get legally married to someone losing that bad",
+        'how does someone losing that bad go home and have sex with their wife?',
+        "your team's so bad they take an hour and a half to watch 60 minutes",
+        "there's always next year",
+        "that's gonna be a no from me dawg",
+        "Don't feel bad, there are lots of people with no talent just like you",
+        "I've got the open mic all warmed up for you",
+        "Is your team always this bad or is this a special occasion?",
+        "FYI its second place that gets their money back, not second-to-last",
+        "at least your football IQ almost hit double digits"
+    ])
+
 def get_trophies(league):
     #Gets trophies for highest score, lowest score, closest score, and biggest win
     matchups = league.box_scores()
@@ -219,7 +237,7 @@ def get_trophies(league):
     low_score_str = ['Low score: %s with %.2f points' % (low_team_name, low_score)]
     high_score_str = ['High score: %s with %.2f points' % (high_team_name, high_score)]
     close_score_str = ['%s barely beat %s by a margin of %.2f' % (close_winner, close_loser, closest_score)]
-    blowout_str = ['%s blown out by %s by a margin of %.2f' % (blown_out_team_name, ownerer_team_name, biggest_blowout)]
+    blowout_str = ['%s blown out by %s by a margin of %.2f (%s)' % (blown_out_team_name, ownerer_team_name, biggest_blowout, random_insult())]
 
     text = ['Trophies of the week:'] + low_score_str + high_score_str + close_score_str + blowout_str
     return '\n'.join(text)
